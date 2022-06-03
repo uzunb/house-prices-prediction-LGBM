@@ -1,10 +1,11 @@
+#%% Imports
 from math import ceil, floor
 import pickle
 import numpy as np
 import streamlit as st
 import pandas as pd
 
-# MODEL LOADING
+#%% MODEL LOADING
 df = pd.read_csv(r"house_price.csv")
 
 dropColumns = ["Id", "MSSubClass", "MSZoning", "Street", "LandContour", "Utilities", "LandSlope", "Condition1", "Condition2", "BldgType", "OverallCond", "RoofStyle",
@@ -41,12 +42,13 @@ for feature in obj_feat:
 modelName = r"finalized_model.model"
 loaded_model = pickle.load(open(modelName, 'rb'))
 
-# STREAMLIT FRONTEND DEVELOPMENT
+#%% STREAMLIT FRONTEND DEVELOPMENT
 
 st.title("House Prices Prediction")
 st.write("### This is a simple model for house prices prediction.")
 
 st.sidebar.title("Model Parameters")
+st.sidebar.write("### Categorical Features")
 
 inputDict = dict(inputDf)
 
@@ -64,6 +66,8 @@ variables = droppedDf["GarageFinish"].drop_duplicates().to_list()
 inputDict["GarageFinish"] = st.sidebar.selectbox(
     "GarageFinish", options=variables)
 
+
+st.sidebar.write("### Numeriacal Features")
 
 inputDict["LotFrontage"] = st.sidebar.slider("LotFrontage", ceil(droppedDf["LotFrontage"].min()),
                                              floor(droppedDf["LotFrontage"].max()), int(droppedDf["LotFrontage"].mean()))
@@ -88,10 +92,9 @@ for feature in obj_feat:
     inputDf[feature] = inputDf[feature].astype('category')
 
 prediction = loaded_model.predict(inputDf)
-st.write("# Prediction: ", prediction.item())
 
-st.write("### Grup 2")
-st.write("##### Week 4 - Machine Learning Model Deployment")
-st.write("##### Contributions: Batuhan UZUN, ...")
-st.write("###### Date: 2020-05-20")
-st.write("###### Version: 1.0")
+st.write("### Prediction: ", prediction.item())
+
+st.write("###### Group 2 | Week 4 - Machine Learning Model Deployment")
+st.write("Date: 2020-05-20")
+st.write("Version: 1.0")
