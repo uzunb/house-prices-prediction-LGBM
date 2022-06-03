@@ -40,6 +40,34 @@ The dataset contains the following features:
 * **YrSold**: Year house was sold
 * **SalePrice**: Sale price
 
+## Usage
+
+```bash
+# clone the repo
+git clone https://github.com/uzunb/house-prices-prediction-LGBM.git
+
+# change to the repo directory
+cd house-prices-prediction-LGBM
+
+# if virtualenv is not installed, install it
+#pip install virtualenv
+
+# create a virtualenv
+virtualenv -p python3 venv
+
+# activate virtualenv for linux or mac
+source venv/bin/activate
+
+# activate virtualenv for windows
+# venv\Scripts\activate
+
+# install dependencies
+pip install -r requirements.txt
+
+# run the script
+streamlit run main.py
+```
+
 ## Model Development
 
 ### Model
