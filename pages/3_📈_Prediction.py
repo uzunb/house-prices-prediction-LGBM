@@ -47,41 +47,22 @@ def app():
     st.write("### This is a simple model for house prices prediction.")
 
     st.sidebar.title("Model Parameters")
-    st.sidebar.write("### Categorical Features")
+    st.sidebar.write("### Future importance of model")
 
     inputDict = dict(inputDf)
 
-    variables = droppedDf["Alley"].drop_duplicates().to_list()
-    inputDict["Alley"] = st.sidebar.selectbox("Alley", options=variables)
-    variables = droppedDf["Neighborhood"].drop_duplicates().to_list()
-    inputDict["Neighborhood"] = st.sidebar.selectbox(
-        "Neighborhood", options=variables)
-    variables = droppedDf["HouseStyle"].drop_duplicates().to_list()
-    inputDict["HouseStyle"] = st.sidebar.selectbox(
-        "HouseStyle", options=variables)
-    variables = droppedDf["KitchenQual"].drop_duplicates().to_list()
-    inputDict["KitchenQual"] = st.sidebar.selectbox(
-        "KitchenQual", options=variables)
-    variables = droppedDf["GarageFinish"].drop_duplicates().to_list()
-    inputDict["GarageFinish"] = st.sidebar.selectbox(
-        "GarageFinish", options=variables)
+    # Get Feature importance of model
+    featureImportances = pd.Series(loaded_model.feature_importances_,index = droppedDf.columns).sort_values(ascending=False)[:20]
 
-    st.sidebar.write("### Numeriacal Features")
-
-    inputDict["LotFrontage"] = st.sidebar.slider("LotFrontage", ceil(droppedDf["LotFrontage"].min()),
-                                                 floor(droppedDf["LotFrontage"].max()), int(droppedDf["LotFrontage"].mean()))
-
-    inputDict["OverallQual"] = st.sidebar.slider("OverallQual", ceil(droppedDf["OverallQual"].min()),
-                                                 floor(droppedDf["OverallQual"].max()), int(droppedDf["OverallQual"].mean()))
-
-    inputDict["YearBuilt"] = st.sidebar.slider("YearBuilt", ceil(droppedDf["YearBuilt"].min()),
-                                               floor(droppedDf["YearBuilt"].max()), int(droppedDf["YearBuilt"].mean()))
-
-    inputDict["GrLivArea"] = st.sidebar.slider("GrLivArea", ceil(droppedDf["GrLivArea"].min()),
-                                               floor(droppedDf["GrLivArea"].max()), int(droppedDf["GrLivArea"].mean()))
-
-    inputDict["TotalBsmtSF"] = st.sidebar.slider("TotalBsmtSF", ceil(droppedDf["TotalBsmtSF"].min()),
-                                                 floor(droppedDf["TotalBsmtSF"].max()), int(droppedDf["TotalBsmtSF"].mean()))
+    for idx, i in enumerate(featureImportances.index):
+        if droppedDf[i].dtype == "object":
+            variables = droppedDf[i].drop_duplicates().to_list()
+            inputDict[i] = st.sidebar.selectbox(i, options=variables, key=idx)
+        elif droppedDf[i].dtype == "int64" or droppedDf[i].dtype == "float64":
+            inputDict[i] = st.sidebar.slider(i, ceil(droppedDf[i].min()),
+                                                floor(droppedDf[i].max()), int(droppedDf[i].mean()), key=idx)
+        else:
+            st.sidebar.write(i)
 
     for key, value in inputDict.items():
         inputDf[key] = value
