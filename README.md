@@ -163,4 +163,12 @@ The model is trained on the dataset and tested on the test dataset. The results 
 
 ## Contributions
 
-* Batuhan UZUN
+* Batuhan UZUN - [Github](https://https://github.com/uzunb) - [LinkedIn](https://linkedin.com/in/uzunb)
+* Dursun Tunahan BİLGİN - [Github](https://github.com/bilgind17) - [LinkedIn](https://www.linkedin.com/in/dtunahanbilgin/)
+* Anıl DÖNMEZ - [Github](https://github.com/anildonmz) - [LinkedIn](https://www.linkedin.com/in/anilldonmez/)
+* Hazal SEZGİN - [Github](https://github.com/hazalsezgin) - [LinkedIn](https://www.linkedin.com/in/hazal-sezgin-48a253170)
+* Müşerref ÖZKAN - [Github](https://github.com/MuserrefOzkn) - [LinkedIn](https://www.linkedin.com/in/müşerrefözkan)
+* Hanife YAMAN - [Github](https://github.com/hanifeyaman) - [LinkedIn](https://www.linkedin.com/in/hanife-yaman/)
+* Üftade Bengi EROLÇAY - [Github](https://github.com/uftadeerolcay) - [LinkedIn](https://www.linkedin.com/in/uftade-bengi-erolcay)
+* Yiğit YILMAZ - [Github](https://github.com/yilmazyigit) - [LinkedIn](https://www.linkedin.com/in/yigityilmaz4/)
+* Selin ÇILDAM - [Github](https://github.com/selincildam) - [LinkedIn](https://www.linkedin.com/in/selincildam/)
