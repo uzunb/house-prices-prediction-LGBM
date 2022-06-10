@@ -47,7 +47,7 @@ def app():
     st.write("### This is a simple model for house prices prediction.")
 
     st.sidebar.title("Model Parameters")
-    st.sidebar.write("### Future importance of model")
+    st.sidebar.write("### Feature importance of model")
 
     inputDict = dict(inputDf)
 
