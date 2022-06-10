@@ -1,5 +1,7 @@
 # house-prices-prediction-LGBM
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/uzunb/house-prices-prediction-lgbm/main/1_%F0%9F%92%BB_Enter_Page.py)
+
 ## Description
 
 This repo has been developed for the Istanbul Data Science Bootcamp, organized in cooperation with İBB & Kodluyoruz. Prediction for house prices was developed using the Kaggle House Prices - Advanced Regression Techniques competition dataset.
@@ -159,7 +161,7 @@ floor(droppedDf["LotFrontage"].max()), int(droppedDf["LotFrontage"].mean()))
 
 The model is trained on the dataset and tested on the test dataset. The results are shown demo with Streamlit below:
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/uzunb/house-prices-prediction-lgbm/main/main.py)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/uzunb/house-prices-prediction-lgbm/main/1_%F0%9F%92%BB_Enter_Page.py)
 
 ## Contributions
 
