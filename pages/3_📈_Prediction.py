@@ -9,8 +9,8 @@ def app():
     df = pd.read_csv(r"house_price.csv")
 
     dropColumns = ["Id", "MSSubClass", "MSZoning", "Street", "LandContour", "Utilities", "LandSlope", "Condition1", "Condition2", "BldgType", "OverallCond", "RoofStyle",
-                   "RoofMatl", "Exterior1st", "Exterior2nd", "MasVnrType", "ExterCond", "Foundation", "BsmtCond", "BsmtExposure", "BsmtFinType1",
-                   "BsmtFinType2", "BsmtFinSF2", "BsmtUnfSF", "Heating", "Electrical", "LowQualFinSF", "BsmtFullBath", "BsmtHalfBath", "HalfBath"] + ["SaleCondition", "SaleType", "YrSold", "MoSold", "MiscVal", "MiscFeature", "Fence", "PoolQC", "PoolArea", "ScreenPorch", "3SsnPorch", "EnclosedPorch", "OpenPorchSF", "WoodDeckSF", "PavedDrive", "GarageCond", "GarageQual", "GarageType", "FireplaceQu", "Functional", "KitchenAbvGr", "BedroomAbvGr"]
+                "RoofMatl", "Exterior1st", "Exterior2nd", "MasVnrType", "ExterCond", "Foundation", "BsmtCond", "BsmtExposure", "BsmtFinType1",
+                "BsmtFinType2", "BsmtFinSF2", "BsmtUnfSF", "Heating", "Electrical", "LowQualFinSF", "BsmtFullBath", "BsmtHalfBath", "HalfBath"] + ["SaleCondition", "SaleType", "YrSold", "MoSold", "MiscVal", "MiscFeature", "Fence", "PoolQC", "PoolArea", "ScreenPorch", "3SsnPorch", "EnclosedPorch", "OpenPorchSF", "WoodDeckSF", "PavedDrive", "GarageCond", "GarageQual", "GarageType", "FireplaceQu", "Functional", "KitchenAbvGr", "BedroomAbvGr"]
 
     droppedDf = df.drop(columns=dropColumns, axis=1)
 
@@ -22,8 +22,8 @@ def app():
     droppedDf["BsmtQual"].fillna("NO", inplace=True)
     droppedDf["MasVnrArea"].fillna(0, inplace=True)
     droppedDf['MasVnrAreaCatg'] = np.where(droppedDf.MasVnrArea > 1000, 'BIG',
-                                           np.where(droppedDf.MasVnrArea > 500, 'MEDIUM',
-                                                    np.where(droppedDf.MasVnrArea > 0, 'SMALL', 'NO')))
+                                    np.where(droppedDf.MasVnrArea > 500, 'MEDIUM',
+                                    np.where(droppedDf.MasVnrArea > 0, 'SMALL', 'NO')))
 
     droppedDf = droppedDf.drop(['SalePrice'], axis=1)
     inputDf = droppedDf.iloc[[0]].copy()
@@ -48,21 +48,11 @@ def app():
 
     st.sidebar.title("Model Parameters")
     st.sidebar.write("### Feature importance of model")
+    
+    
 
     inputDict = dict(inputDf)
 
-    # Get Feature importance of model
-    featureImportances = pd.Series(loaded_model.feature_importances_,index = droppedDf.columns).sort_values(ascending=False)[:20]
-
-    for idx, i in enumerate(featureImportances.index):
-        if droppedDf[i].dtype == "object":
-            variables = droppedDf[i].drop_duplicates().to_list()
-            inputDict[i] = st.sidebar.selectbox(i, options=variables, key=idx)
-        elif droppedDf[i].dtype == "int64" or droppedDf[i].dtype == "float64":
-            inputDict[i] = st.sidebar.slider(i, ceil(droppedDf[i].min()),
-                                                floor(droppedDf[i].max()), int(droppedDf[i].mean()), key=idx)
-        else:
-            st.sidebar.write(i)
 
     for key, value in inputDict.items():
         inputDf[key] = value
@@ -72,13 +62,31 @@ def app():
         inputDf[feature] = inputDf[feature].astype('category')
 
     prediction = loaded_model.predict(inputDf)
+    
+    
+    expander= st.sidebar.expander("Click Here for Feature Importance of Model ")
+    expander.write("## Feature Importance of Model")
+    
+    # Get Feature importance of model
+    featureImportances = pd.Series(loaded_model.feature_importances_,index = droppedDf.columns).sort_values(ascending=False)[:20]
+
+    for idx, i in enumerate(featureImportances.index):
+        if droppedDf[i].dtype == "object":
+            variables = droppedDf[i].drop_duplicates().to_list()
+            inputDict[i] = expander.selectbox(i, options=variables, key=idx)
+        elif droppedDf[i].dtype == "int64" or droppedDf[i].dtype == "float64":
+            inputDict[i] = expander.slider(i, ceil(droppedDf[i].min()),
+                                                floor(droppedDf[i].max()), int(droppedDf[i].mean()), key=idx)
+        else:
+            expander.write(i)
+
 
     st.write("### Prediction: $", prediction.item())
 
     st.write("###### Group 2 | Week 4 - Machine Learning Model Deployment")
     st.write("Date: 2020-05-20")
     st.write("Version: 1.0")
-
+    
 st.set_page_config(page_title="Prediction", page_icon="📈")
 
 app()
