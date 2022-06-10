@@ -57,11 +57,13 @@ cd house-prices-prediction-LGBM
 # create a virtualenv
 virtualenv -p python3 venv
 
-# activate virtualenv for linux or mac
+# activate virtualenv for LINUX or MACOS
 source venv/bin/activate
 
-# activate virtualenv for windows
-# venv\Scripts\activate
+# # activate virtualenv for WINDOWS
+# venv\Scripts\activate.ps1
+#     # throubleshooting for activation error in windows
+#     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # install dependencies
 pip install -r requirements.txt
