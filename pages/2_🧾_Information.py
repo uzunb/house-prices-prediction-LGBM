@@ -4,36 +4,6 @@ def app():
     st.set_page_config(page_title="Information", page_icon="🧾")
 
     st.markdown("""
-## Features
-
-The dataset contains the following features:
-
-* **OverallQual**: Overall quality of the house
-* **GrLivArea**: Above grade (ground) living area square feet
-* **GarageCars**: Number of garage cars
-* **TotalBsmtSF**: Total square feet of basement area
-* **FullBath**: Number of full baths
-* **YearBuilt**: Year house was built
-* **TotRmsAbvGrd**: Total number of rooms above grade (excluding bathrooms and closets)
-* **Fireplaces**: Number of fireplaces
-* **BedroomAbvGr**: Number of bedrooms above grade
-* **GarageYrBlt**: Year garage was built
-* **LowQualFinSF**: Lowest quality finished square feet
-* **LotFrontage**: Lot frontage square feet
-* **MasVnrArea**: Masonry veneer square feet
-* **WoodDeckSF**: Square feet of wood deck area
-* **OpenPorchSF**: Open porch square feet
-* **EnclosedPorch**: Enclosed porch square feet
-* **3SsnPorch**: Three season porch square feet
-* **ScreenPorch**: Screen porch square feet
-* **PoolArea**: Pool square feet
-* **MiscVal**: Miscellaneous value
-* **MoSold**: Month house was sold
-* **YrSold**: Year house was sold
-* **SalePrice**: Sale price     
-    """)
-
-    st.markdown("""
 ## Usage
 
 ```bash
@@ -323,27 +293,15 @@ The model is trained on the dataset and tested on the test dataset. The results 
 ## Contributions
 
 * Batuhan UZUN - [Github](https://https://github.com/uzunb) - [LinkedIn](https://linkedin.com/in/uzunb)
+* Selin ÇILDAM - [Github](https://github.com/selincildam) - [LinkedIn](https://www.linkedin.com/in/selincildam/)
+* Müşerref ÖZKAN - [Github](https://github.com/MuserrefOzkn) - [LinkedIn](https://www.linkedin.com/in/müşerrefözkan)
+* Üftade Bengi EROLÇAY - [Github](https://github.com/uftadeerolcay) - [LinkedIn](https://www.linkedin.com/in/uftade-bengi-erolcay)
 * Dursun Tunahan BİLGİN - [Github](https://github.com/bilgind17) - [LinkedIn](https://www.linkedin.com/in/dtunahanbilgin/)
 * Anıl DÖNMEZ - [Github](https://github.com/anildonmz) - [LinkedIn](https://www.linkedin.com/in/anilldonmez/)
 * Hazal SEZGİN - [Github](https://github.com/hazalsezgin) - [LinkedIn](https://www.linkedin.com/in/hazal-sezgin-48a253170)
-* Müşerref ÖZKAN - [Github](https://github.com/MuserrefOzkn) - [LinkedIn](https://www.linkedin.com/in/müşerrefözkan)
 * Hanife YAMAN - [Github](https://github.com/hanifeyaman) - [LinkedIn](https://www.linkedin.com/in/hanife-yaman/)
-* Üftade Bengi EROLÇAY - [Github](https://github.com/uftadeerolcay) - [LinkedIn](https://www.linkedin.com/in/uftade-bengi-erolcay)
 * Yiğit YILMAZ - [Github](https://github.com/yilmazyigit) - [LinkedIn](https://www.linkedin.com/in/yigityilmaz4/)
-* Selin ÇILDAM - [Github](https://github.com/selincildam) - [LinkedIn](https://www.linkedin.com/in/selincildam/)
-)
-
-## Contributions
-
-* Batuhan UZUN - [Github](https://https://github.com/uzunb) - [LinkedIn](https://linkedin.com/in/uzunb)
-* Dursun Tunahan BİLGİN - [Github](https://github.com/bilgind17) - [LinkedIn](https://www.linkedin.com/in/dtunahanbilgin/)
-* Anıl DÖNMEZ - [Github](https://github.com/anildonmz) - [LinkedIn](https://www.linkedin.com/in/anilldonmez/)
-* Hazal SEZGİN - [Github](https://github.com/hazalsezgin) - [LinkedIn](https://www.linkedin.com/in/hazal-sezgin-48a253170)
-* Müşerref ÖZKAN - [Github](https://github.com/MuserrefOzkn) - [LinkedIn](https://www.linkedin.com/in/müşerrefözkan)
-* Hanife YAMAN - [Github](https://github.com/hanifeyaman) - [LinkedIn](https://www.linkedin.com/in/hanife-yaman/)
-* Üftade Bengi EROLÇAY - [Github](https://github.com/uftadeerolcay) - [LinkedIn](https://www.linkedin.com/in/uftade-bengi-erolcay)
-* Yiğit YILMAZ - [Github](https://github.com/yilmazyigit) - [LinkedIn](https://www.linkedin.com/in/yigityilmaz4/)
-* Selin ÇILDAM - [Github](https://github.com/selincildam) - [LinkedIn](https://www.linkedin.com/in/selincildam/)
+* Aslı ÇİÇEK - [Github](https://github.com/aslicicek) - [LinkedIn](https://www.linkedin.com/in/aslicicek/)
 """)
 
 app()
