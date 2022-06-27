@@ -3,8 +3,9 @@ import pickle
 import numpy as np
 import streamlit as st
 import pandas as pd
+import datetime
 
-
+thedate = datetime.date.today()
 def app():
     df = pd.read_csv(r"house_price.csv")
 
@@ -83,9 +84,9 @@ def app():
 
     st.write("### Prediction: $", prediction.item())
 
-    st.write("###### Group 2 | Week 4 - Machine Learning Model Deployment")
-    st.write("Date: 2020-05-20")
+    st.write("###### Group 2 | Machine Learning Model Deployment")
     st.write("Version: 1.0")
+    st.write("###### Date: ", thedate)
     
 st.set_page_config(page_title="Prediction", page_icon="📈")
 
