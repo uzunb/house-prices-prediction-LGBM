@@ -7,7 +7,7 @@ import datetime
 
 thedate = datetime.date.today()
 def app():
-    df = pd.read_csv(r"house_price.csv")
+    df = pd.read_csv(r"data/house_price.csv")
 
     dropColumns = ["Id", "MSSubClass", "MSZoning", "Street", "LandContour", "Utilities", "LandSlope", "Condition1", "Condition2", "BldgType", "OverallCond", "RoofStyle",
                 "RoofMatl", "Exterior1st", "Exterior2nd", "MasVnrType", "ExterCond", "Foundation", "BsmtCond", "BsmtExposure", "BsmtFinType1",
@@ -40,12 +40,12 @@ def app():
         inputDf[feature] = inputDf[feature].astype('category')
 
     # load the model weights and predict the target
-    modelName = r"finalized_model.model"
+    modelName = r"trained_model.model"
     loaded_model = pickle.load(open(modelName, 'rb'))
 
     # %% STREAMLIT FRONTEND DEVELOPMENT
     st.title("House Prices Prediction")
-    st.write("### This is a simple model for house prices prediction.")
+    st.write("##### This is a simple model for house prices prediction.")
 
     st.sidebar.title("Model Parameters")
     st.sidebar.write("### Feature importance of model")
@@ -78,10 +78,11 @@ def app():
 
     prediction = loaded_model.predict(inputDf)
 
-    st.write("### Prediction: $", prediction.item())
+    st.write("###### Predicted price of the house in the properties you selected: $", prediction.item())
 
-    st.write("###### Group 2 | Machine Learning Model Deployment")
-    st.write("Version: 1.0")
+    st.markdown("------")
+
+    st.write("###### Version: 1.0")
     st.write("###### Date: ", thedate)
     
 st.set_page_config(page_title="Prediction", page_icon="📈")
