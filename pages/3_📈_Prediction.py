@@ -50,26 +50,13 @@ def app():
     st.sidebar.title("Model Parameters")
     st.sidebar.write("### Feature importance of model")
     
-    
-
-    inputDict = dict(inputDf)
-
-
-    for key, value in inputDict.items():
-        inputDf[key] = value
-
-    obj_feat = list(inputDf.loc[:, inputDf.dtypes == 'object'].columns.values)
-    for feature in obj_feat:
-        inputDf[feature] = inputDf[feature].astype('category')
-
-    prediction = loaded_model.predict(inputDf)
-    
-    
     expander= st.sidebar.expander("Click Here for Feature Importance of Model ")
     expander.write("## Feature Importance of Model")
     
     # Get Feature importance of model
     featureImportances = pd.Series(loaded_model.feature_importances_,index = droppedDf.columns).sort_values(ascending=False)[:20]
+    
+    inputDict = dict(inputDf)
 
     for idx, i in enumerate(featureImportances.index):
         if droppedDf[i].dtype == "object":
@@ -81,6 +68,15 @@ def app():
         else:
             expander.write(i)
 
+
+    for key, value in inputDict.items():
+        inputDf[key] = value
+
+    obj_feat = list(inputDf.loc[:, inputDf.dtypes == 'object'].columns.values)
+    for feature in obj_feat:
+        inputDf[feature] = inputDf[feature].astype('category')
+
+    prediction = loaded_model.predict(inputDf)
 
     st.write("### Prediction: $", prediction.item())
 
