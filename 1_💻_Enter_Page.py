@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit.logger import get_logger
+import streamlit.components.v1 as components
 import datetime
 
 LOGGER = get_logger(__name__)
@@ -30,7 +31,10 @@ def run():
     """
     )
     st.write("###### Date: ", thedate)
-
+    st.markdown('![Visitor count](https://shields-io-visitor-counter.herokuapp.com/badge?page=https://share.streamlit.io/your_deployed_app_link&label=VisitorsCount&labelColor=000000&logo=GitHub&logoColor=FFFFFF&color=1D70B8&style=for-the-badge)')
+                                        
+                                          
+                            
 
 if __name__ == "__main__":
     run()
