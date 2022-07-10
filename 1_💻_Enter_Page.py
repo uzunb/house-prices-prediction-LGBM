@@ -7,7 +7,7 @@ LOGGER = get_logger(__name__)
 
 thedate = datetime.date.today()
 def run():
-    st.image('./clear-glass-large-windows-on-a-house-with-asymmetrical-cube-shaped-structures-built-near-an-oval-blue-pool.jpg')
+    st.image(r'./resources/enter_page_image.jpg', use_column_width=True)
     # st.set_page_config(page_title="Enter Page", page_icon="💻")
 
     st.write("""
